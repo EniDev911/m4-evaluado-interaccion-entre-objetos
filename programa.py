@@ -8,7 +8,7 @@ if __name__ == "__main__":
 
     while True:
         opciones = ["1. Restaurante", "2. Supermercado", "3. Farmacia"]
-        print("¿Qué tipo de tienda desea crear?", opciones, sep="\n")
+        print("¿Qué tipo de tienda desea crear?", *opciones, sep="\n")
         tienda = int(input("> "))
     
         tipo_tienda = {
@@ -37,21 +37,26 @@ if __name__ == "__main__":
         nombre = input("Ingrese nombre del producto:\n> ")
         precio = int(input("\nIngrese el precio del producto:\n> "))
         stock = int(input("\nIngrese stock del producto:\n> "))
-
         tienda.agregar_producto(nombre, precio, stock)
-
         opcion = int(input("\n¿Desea ingresar otro producto?\n1. Sí\n2. No\n"))
+
     while True:
 
         clear()
-
         opciones = ["1. Listar productos existentes", "2. Realizar una venta", "3. Salir del programa"]
         print("¿Qué operación desea realizar?", *opciones, sep="\n")
         operacion = int(input("> "))
+
         if operacion == 1:
+            clear()
             print(*tienda.listar_productos(), sep="\n\n")
+            time.sleep(2)
+
         elif operacion == 2:
-            tienda.realizar_ventas()
+            nombre = input("Ingrese nombre del producto:\n> ")
+            cantidad = int(input("\nIngrese cantidad del producto:\n> "))
+            tienda.realizar_ventas(nombre, cantidad)
+
         elif operacion == 3:
             break
 

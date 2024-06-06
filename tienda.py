@@ -61,10 +61,7 @@ class Supermercado(Tienda):
 			for p in self.__productos
 			]
 
-	def realizar_ventas(self):
-
-		nombre = input("Ingrese nombre del producto:\n> ")
-		cantidad = int(input("\nIngrese cantidad del producto:\n> "))
+	def realizar_ventas(self, nombre:str, cantidad:int):
 
 		for p in self.__productos:
 			if nombre == p.nombre and p.stock > 0:
@@ -75,8 +72,8 @@ class Farmacia(Tienda):
 
 	def __init__(self, nombre, delevery):
 		self.__nombre = nombre
-		self.__productos = []
 		self.__delevery = delevery
+		self.__productos = []
 
 	def agregar_producto(self, nombre:str, precio:int, stock:int = 0):
 
@@ -98,7 +95,7 @@ class Farmacia(Tienda):
 			]
 
 
-	def realizar_ventas(self, cantidad: int):
+	def realizar_ventas(self, nombre: str, cantidad: int):
 
 		for p in self.__productos:
 			if nombre == p.nombre and p.stock > cantidad and cantidad <= 3:
